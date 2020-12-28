@@ -1,4 +1,17 @@
+# Intellij IDEA
+/.idea
+*.iml
+
+# Selenide
+/build/
+
+# General for Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
 # Compiled class file
+target/
 *.class
 
 # Log file
@@ -21,3 +34,5 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+/allure-results/
