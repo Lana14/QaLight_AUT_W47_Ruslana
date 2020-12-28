@@ -1,0 +1,1 @@
+# QaLight_AUT_W47_Ruslana
