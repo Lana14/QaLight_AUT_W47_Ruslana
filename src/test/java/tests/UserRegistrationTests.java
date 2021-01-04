@@ -10,14 +10,14 @@ import java.time.Instant;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class UserRegistration extends BasePage {
+public class UserRegistrationTests extends BasePage {
 
     @BeforeMethod
     public void openUrl() {
         open(Constants.URL);
     }
 
-    @Test(description = "Register as a new user")
+    @Test(description = "A new user can register successfully")
     void signUp(){
         String loginName = "TestUser_" + Instant.now().getEpochSecond();
         String email = EmailAddressCreator.createRandomAddress();

@@ -44,7 +44,7 @@ public class RegisterPage {
         return this;
     }
 
-    @Step("Confirm password")
+    @Step("Submit the registration form")
     public HomePage clickSubmitButton() {
         $(byXpath(submitButton)).click();
         return new HomePage();
