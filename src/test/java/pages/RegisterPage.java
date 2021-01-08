@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -16,7 +15,7 @@ public class RegisterPage {
     String userPassword = "//input[@id='pass1']";
     String userPasswordConfirmation = "//input[@id='pass2']";
     String submitButton = "//button[@name='submit']";
-    SelenideElement error = $(byXpath("//li[@class='tml-error']//strong[text()='ОШИБКА']"));
+    String error = "//li[@class='tml-error']//strong[text()='ОШИБКА']";
     String errorMessage = "//li[@class='tml-error']";
 
     @Step("Insert user login")
@@ -53,7 +52,7 @@ public class RegisterPage {
     @Step("Verify that the duplicate email address error is displayed")
     public RegisterPage duplicateEmailAddressErrorIsDisplayed() {
         String duplicateEmailAddressErrorMessage = "ОШИБКА: Этот email уже зарегистрирован. Пожалуйста, введите другой.";
-        error.shouldBe(Condition.visible);
+        $(byXpath(error)).shouldBe(Condition.visible);
         Assert.assertEquals(WebDriverRunner.getWebDriver().findElement(byXpath(errorMessage)).getText(), duplicateEmailAddressErrorMessage);
         return this;
     }
