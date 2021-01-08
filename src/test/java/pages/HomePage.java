@@ -9,18 +9,17 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage {
-    String signIn = "//span[text()='Sign in']";
+    String signInMenuItem = "//a/span[text()='Sign in']";
     String hello = "//a[text()='Привет, ']";
     String userName = "//li[@id='wp-admin-bar-my-account']/a/span";
     String yourObjectiveMenuItem = "//a/span[text()='Your Objective']";
     String achieveYourGoalMenuItem = "//a/span[text()='Achieve your goal']";
     String chooseYourPackMenuItem = "//a/span[text()='Choose your pack']";
     String pricingMenuItem = "//a/span[text()='Pricing']";
-    String signInMenuItem = "//a/span[text()='Sign in']";
 
     @Step("Open the Login page")
     public LoginPage openLoginPage() {
-        $(byXpath(signIn)).click();
+        $(byXpath(signInMenuItem)).click();
         return new LoginPage();
     }
 

@@ -100,7 +100,8 @@ public class RegisterPage {
     @Step("Verify the validation error is displayed when passwords do not match")
     public RegisterPage verifyErrorPasswordsDoNotMatch() {
         $(byXpath(error)).shouldBe(Condition.visible)
-                .shouldHave(exactText("Error: Passwords don’t match. Please enter the same password in both password fields.\n"));
+                .shouldHave(exactText("Error: Passwords don’t match. " +
+                        "Please enter the same password in both password fields."));
         return this;
     }
 
