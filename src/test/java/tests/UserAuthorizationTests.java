@@ -5,10 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import utils.Constants;
-import utils.EmailAddressCreator;
-
-import java.time.Instant;
+import utils.*;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -29,7 +26,7 @@ public class UserAuthorizationTests extends BasePage {
     }
 
     @Test(description = "User can login successfully using registered user email address")
-    void logInRegisteredUserEmailAddress() {
+    void logInWithRegisteredUserEmailAddress() {
         homePage.openLoginPage();
         loginPage.insertUserLoginName(Constants.USER_EMAIL)
                 .insertPassword(Constants.USER_PASSWORD)
@@ -49,13 +46,13 @@ public class UserAuthorizationTests extends BasePage {
     void validationErrorsAppearWhileSubmittingEmptyLoginForm() {
         homePage.openLoginPage();
         loginPage.clickSubmitButton();
-        loginPage.verifyUserLoginNameFieldEmptyError()
-                .verifyPasswordFieldEmptyError();
+        loginPage.verifyErrorUserLoginNameFieldIsEmpty()
+                .verifyErrorPasswordFieldIsEmpty();
     }
 
     @Test(description = "Validation error appears when unknown user name is entered")
     void validationErrorAppearsWhenUnknownUserNameIsEntered() {
-        String loginName = "TestUser_" + Instant.now().getEpochSecond();
+        String loginName = RandomUserNameCreator.generateRandomUserName();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(loginName)
@@ -66,7 +63,7 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when unknown user email address is entered")
     void validationErrorAppearsWhenUnknownUserEmailAddressIsEntered() {
-        String email = EmailAddressCreator.createRandomAddress();
+        String email = RandomEmailAddressCreator.createRandomAddress();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(email)
@@ -77,7 +74,7 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with login name")
     void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithUserName() {
-        String password = "TestPassw0rd@" + Instant.now().getEpochSecond() + "!$";
+        String password = RandomPasswordCreator.generateRandomPassword();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(Constants.USER_LOGIN_NAME)
@@ -88,7 +85,7 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with email")
     void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithEmail() {
-        String password = "TestPassw0rd@" + Instant.now().getEpochSecond() + "!$";
+        String password = RandomPasswordCreator.generateRandomPassword();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(Constants.USER_EMAIL)

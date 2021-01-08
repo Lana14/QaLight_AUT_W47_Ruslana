@@ -53,7 +53,7 @@ public class LoginPage {
     }
 
     @Step("Verify that the logout message is displayed")
-    public LoginPage verifyLogoutMessageIsDisplayed(){
+    public LoginPage verifyLogoutMessageIsDisplayed() {
         $(byXpath(headerTitle)).shouldBe(Condition.visible);
         $(byXpath(message)).shouldBe(Condition.visible)
                 .shouldHave(exactText("Вы вышли из системы."));
@@ -61,42 +61,42 @@ public class LoginPage {
     }
 
     @Step("Verify the validation error is displayed when the UserLoginName field is empty")
-    public LoginPage verifyUserLoginNameFieldEmptyError(){
+    public LoginPage verifyErrorUserLoginNameFieldIsEmpty() {
         $(byXpath(error), 0).shouldBe(Condition.visible)
                 .shouldHave(exactText("ОШИБКА: Вы не ввели имя пользователя."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Password field is empty")
-    public LoginPage verifyPasswordFieldEmptyError(){
+    public LoginPage verifyErrorPasswordFieldIsEmpty() {
         $(byXpath(error), 1).shouldBe(Condition.visible)
                 .shouldHave(exactText("ОШИБКА: Вы не ввели пароль."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when unknown user name is entered")
-    public LoginPage verifyErrorUnknownUserNameIsEntered(){
+    public LoginPage verifyErrorUnknownUserNameIsEntered() {
         $(byXpath(error)).shouldBe(Condition.visible)
                 .shouldHave(exactText("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when unknown user email address is entered")
-    public LoginPage verifyErrorUnknownUserEmailAddressIsEntered(){
+    public LoginPage verifyErrorUnknownUserEmailAddressIsEntered() {
         $(byXpath(error)).shouldBe(Condition.visible)
                 .shouldHave(exactText("Неизвестный адрес email. Перепроверьте или попробуйте ваше имя пользователя."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when incorrect password is entered - Login with login name")
-    public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithLoginName(String loginName){
+    public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithLoginName(String loginName) {
         $(byXpath(error)).shouldBe(Condition.visible)
                 .shouldHave(exactText("ОШИБКА: Введённый вами пароль пользователя " + loginName + " неверен. Забыли пароль?"));
         return this;
     }
 
     @Step("Verify the validation error is displayed when incorrect password is entered - Login with email")
-    public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(String email){
+    public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(String email) {
         $(byXpath(error)).shouldBe(Condition.visible)
                 .shouldHave(exactText("ОШИБКА: Введённый вами пароль для адреса " + email + " неверен. Забыли пароль?"));
         return this;
