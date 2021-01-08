@@ -38,7 +38,7 @@ public class UserAuthorizationTests extends BasePage {
     void logOut() {
         homePage.openLoginPage();
         loginPage.loginAs(Constants.USER_LOGIN_NAME, Constants.USER_PASSWORD)
-                .loginOut()
+                .logOut()
                 .verifyLogoutMessageIsDisplayed();
     }
 

@@ -13,7 +13,7 @@ public class DashboardPage {
     String logout = "//ul[@class='tml-dashboard-links']//a[text()='Выйти']";
 
     @Step("Verify that the Dashboard page is opened after user login")
-    public DashboardPage verifyDashboardPageIsOpenedAfterUserLogin(String userLoginName){
+    public DashboardPage verifyDashboardPageIsOpenedAfterUserLogin(String userLoginName) {
         $(byXpath(headerTitle)).shouldBe(Condition.visible);
         $(byXpath(hello)).shouldBe(Condition.visible);
         $(byXpath(hello)).shouldHave(exactText("Привет, " + userLoginName));
@@ -21,7 +21,7 @@ public class DashboardPage {
     }
 
     @Step("Logout from the Dashboard page")
-    public LoginPage loginOut() {
+    public LoginPage logOut() {
         $(byXpath(logout)).click();
         return new LoginPage();
     }
