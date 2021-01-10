@@ -8,6 +8,7 @@ import pages.BasePage;
 import utils.*;
 
 import static com.codeborne.selenide.Selenide.open;
+import static steps.CommonSteps.*;
 
 public class UserAuthorizationTests extends BasePage {
 
@@ -52,7 +53,7 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when unknown user name is entered")
     void validationErrorAppearsWhenUnknownUserNameIsEntered() {
-        String loginName = RandomUserNameCreator.generateRandomUserName();
+        String loginName = generateRandomUserName();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(loginName)
@@ -63,7 +64,7 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when unknown user email address is entered")
     void validationErrorAppearsWhenUnknownUserEmailAddressIsEntered() {
-        String email = RandomEmailAddressCreator.createRandomAddress();
+        String email = createRandomAddress();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(email)
@@ -74,7 +75,7 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with login name")
     void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithUserName() {
-        String password = RandomPasswordCreator.generateRandomPassword();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(Constants.USER_LOGIN_NAME)
@@ -85,7 +86,7 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with email")
     void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithEmail() {
-        String password = RandomPasswordCreator.generateRandomPassword();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(Constants.USER_EMAIL)

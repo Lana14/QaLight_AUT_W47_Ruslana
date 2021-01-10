@@ -7,6 +7,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static steps.CommonSteps.checkUrl;
 
 public class HomePage {
     String signInMenuItem = "//a/span[text()='Sign in']";
@@ -35,29 +36,9 @@ public class HomePage {
         $(byXpath(yourObjectiveMenuItem)).click();
     }
 
-    @Step("Verify the Your Objective menu item is not a broken link")
-    public void verifyYourObjectiveMenuItemIsNotBrokenLink() {
-        String h2 = "//h2[text()='Фитнес']";
-        String body = "//body";
-
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),
-                "https://5element.ua/");
-        $(byXpath(body)).shouldNotHave(text("404"));
-        $(byXpath(h2)).shouldBe(visible);
-    }
-
     @Step("Click the Achieve your goal menu item")
     public void clickAchieveYourGoalMenuItem() {
         $(byXpath(achieveYourGoalMenuItem)).click();
-    }
-
-    @Step("Verify the Achieve your goal menu item is not a broken link")
-    public void verifyAchieveYourGoalMenuItemIsNotBrokenLink() {
-        String body = "//body";
-
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),
-                "https://5element.ua/about/special_offer/");
-        $(byXpath(body)).shouldNotHave(text("404"));
     }
 
     @Step("Click the Choose your pack menu item")
@@ -65,35 +46,14 @@ public class HomePage {
         $(byXpath(chooseYourPackMenuItem)).click();
     }
 
-    @Step("Verify the Choose your pack menu item is not a broken link")
-    public void verifyChooseYourPackMenuItemIsNotBrokenLink() {
-        String body = "//body";
-
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),
-                "https://5element.ua/shedule/");
-        $(byXpath(body)).shouldNotHave(text("404"));
-    }
-
     @Step("Click the Pricing menu item")
     public void clickPricingMenuItem() {
         $(byXpath(pricingMenuItem)).click();
     }
 
-    @Step("Verify the Pricing menu item is not a broken link")
-    public void verifyPricingMenuItemIsNotBrokenLink() {
-        String body = "//body";
-
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),
-                "https://5element.ua/klubnye-karty/");
-        $(byXpath(body)).shouldNotHave(text("404"));
-    }
-
-    @Step("Verify the Sign in menu item is not a broken link")
-    public void verifySignInMenuItemIsNotBrokenLink() {
-        String body = "//body";
-
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),
-                "https://it-platforma.website/login/");
-        $(byXpath(body)).shouldNotHave(text("404"));
+    @Step("Verify the menu item is not a broken link")
+    public void verifyMenuItemIsNotBrokenLink(String link) {
+        checkUrl(link, 5);
+        $(byXpath("//body")).shouldNotHave(text("404"));
     }
 }

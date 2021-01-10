@@ -8,6 +8,7 @@ import pages.BasePage;
 import utils.*;
 
 import static com.codeborne.selenide.Selenide.open;
+import static steps.CommonSteps.*;
 
 public class UserRegistrationTests extends BasePage {
 
@@ -18,10 +19,10 @@ public class UserRegistrationTests extends BasePage {
 
     @Test(description = "A new user can register successfully",
             retryAnalyzer = RetryAnalyzer.class)
-    void signUp(){
-        String loginName = RandomUserNameCreator.generateRandomUserName();
-        String email = RandomEmailAddressCreator.createRandomAddress();
-        String password = RandomPasswordCreator.generateRandomPassword();
+    void signUp() {
+        String loginName = generateRandomUserName();
+        String email = createRandomAddress();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage();
         loginPage.openRegisterPage();
@@ -47,8 +48,8 @@ public class UserRegistrationTests extends BasePage {
     @Test(description = "Validation error appears when an incorrect user name is entered",
             retryAnalyzer = RetryAnalyzer.class)
     void validationErrorAppearsWhenIncorrectUserNameIsEntered() {
-        String email = RandomEmailAddressCreator.createRandomAddress();
-        String password = RandomPasswordCreator.generateRandomPassword();
+        String email = createRandomAddress();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage()
                 .openRegisterPage();
@@ -62,9 +63,9 @@ public class UserRegistrationTests extends BasePage {
     @Test(description = "Validation error appears when an incorrect email address is entered",
             retryAnalyzer = RetryAnalyzer.class)
     void validationErrorAppearsWhenIncorrectEmailAddressIsEntered() {
-        String loginName = RandomUserNameCreator.generateRandomUserName();
-        String email = RandomEmailAddressCreator.createRandomAddress();
-        String password = RandomPasswordCreator.generateRandomPassword();
+        String loginName = generateRandomUserName();
+        String email = createRandomAddress();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage()
                 .openRegisterPage();
@@ -83,9 +84,9 @@ public class UserRegistrationTests extends BasePage {
     @Test(description = "Validation error appears when the password is not confirmed",
             retryAnalyzer = RetryAnalyzer.class)
     void validationErrorAppearsWhenPasswordIsNotConfirmed() {
-        String loginName = RandomUserNameCreator.generateRandomUserName();
-        String email = RandomEmailAddressCreator.createRandomAddress();
-        String password = RandomPasswordCreator.generateRandomPassword();
+        String loginName = generateRandomUserName();
+        String email = createRandomAddress();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage()
                 .openRegisterPage();
@@ -99,9 +100,9 @@ public class UserRegistrationTests extends BasePage {
     @Test(description = "Validation error appears when passwords do not match",
             retryAnalyzer = RetryAnalyzer.class)
     void validationErrorAppearsWhenPasswordsDoNotMatch() {
-        String loginName = RandomUserNameCreator.generateRandomUserName();
-        String email = RandomEmailAddressCreator.createRandomAddress();
-        String password = RandomPasswordCreator.generateRandomPassword();
+        String loginName = generateRandomUserName();
+        String email = createRandomAddress();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage()
                 .openRegisterPage();
@@ -115,9 +116,9 @@ public class UserRegistrationTests extends BasePage {
 
     @Test(description = "Verify that User can't use a duplicated email while registration",
             retryAnalyzer = RetryAnalyzer.class)
-    void duplicateEmailAddressError(){
-        String loginName = RandomUserNameCreator.generateRandomUserName();
-        String password = RandomPasswordCreator.generateRandomPassword();
+    void duplicateEmailAddressError() {
+        String loginName = generateRandomUserName();
+        String password = generateRandomPassword();
 
         homePage.openLoginPage();
         loginPage.openRegisterPage();

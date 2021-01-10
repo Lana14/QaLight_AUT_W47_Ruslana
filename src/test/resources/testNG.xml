@@ -3,6 +3,7 @@
 <suite name="Suite">
     <listeners>
         <listener class-name="listeners.CustomListener"/>
+        <listener class-name="listeners.RetryListener"/>
     </listeners>
     <test thread-count="5" name="Annotations">
         <packages>
