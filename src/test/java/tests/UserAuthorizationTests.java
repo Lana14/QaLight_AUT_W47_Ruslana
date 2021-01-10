@@ -1,21 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import utils.*;
 
-import static com.codeborne.selenide.Selenide.open;
 import static steps.CommonSteps.*;
 
 public class UserAuthorizationTests extends BasePage {
-
-    @BeforeMethod
-    public void openUrl() {
-        open(Constants.URL);
-    }
 
     @Test(description = "User can login successfully using registered user name")
     void logInWithRegisteredUserName() {
@@ -93,10 +84,5 @@ public class UserAuthorizationTests extends BasePage {
                 .insertPassword(password)
                 .clickSubmitButton();
         loginPage.verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(Constants.USER_EMAIL);
-    }
-
-    @AfterMethod
-    public void closeWindow() {
-        Selenide.closeWindow();
     }
 }

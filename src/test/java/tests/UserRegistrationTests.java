@@ -1,21 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import utils.*;
 
-import static com.codeborne.selenide.Selenide.open;
 import static steps.CommonSteps.*;
 
 public class UserRegistrationTests extends BasePage {
-
-    @BeforeMethod
-    public void openUrl() {
-        open(Constants.URL);
-    }
 
     @Test(description = "A new user can register successfully",
             retryAnalyzer = RetryAnalyzer.class)
@@ -128,10 +119,5 @@ public class UserRegistrationTests extends BasePage {
                 .confirmPassword(password)
                 .clickSubmitButton();
         registerPage.duplicateEmailAddressErrorIsDisplayed();
-    }
-
-    @AfterMethod
-    public void closeWindow() {
-        Selenide.closeWindow();
     }
 }

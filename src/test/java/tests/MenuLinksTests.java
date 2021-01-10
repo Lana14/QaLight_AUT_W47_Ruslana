@@ -1,20 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import utils.Constants;
-
-import static com.codeborne.selenide.Selenide.open;
 
 public class MenuLinksTests extends BasePage {
-
-    @BeforeMethod
-    public void openUrl() {
-        open(Constants.URL);
-    }
 
     @Test(description = "Verify the Your Objective menu item is not a broken link")
     void VerifyYourObjectiveMenuItemIsNotBrokenLink() {
@@ -44,10 +33,5 @@ public class MenuLinksTests extends BasePage {
     void VerifySignInMenuItemIsNotBrokenLink() {
         homePage.openLoginPage();
         homePage.verifyMenuItemIsNotBrokenLink("https://it-platforma.website/login/");
-    }
-
-    @AfterMethod
-    public void closeWindow() {
-        Selenide.closeWindow();
     }
 }
