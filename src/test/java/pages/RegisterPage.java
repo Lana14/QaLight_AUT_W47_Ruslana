@@ -1,9 +1,8 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -18,7 +17,7 @@ public class RegisterPage {
 
     @Step("Insert user login")
     public RegisterPage insertUserLoginName(String loginName) {
-        $(byXpath(headerTitle)).shouldBe(Condition.visible);
+        $(byXpath(headerTitle)).shouldBe(visible);
         $(byXpath(userLoginName)).sendKeys(loginName);
         return this;
     }
@@ -43,41 +42,41 @@ public class RegisterPage {
 
     @Step("Submit the registration form")
     public HomePage clickSubmitButton() {
-        $(byXpath(submitButton)).shouldBe(Condition.visible).click();
+        $(byXpath(submitButton)).shouldBe(visible).click();
         return new HomePage();
     }
 
     @Step("Verify the validation error is displayed when the UserLoginName field is empty")
     public RegisterPage verifyErrorUserLoginNameFieldIsEmpty() {
-        $(byXpath(error), 0).shouldBe(Condition.visible)
+        $(byXpath(error), 0).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Пожалуйста, введите имя пользователя."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Email field is empty")
     public RegisterPage verifyErrorEmailFieldIsEmpty() {
-        $(byXpath(error), 1).shouldBe(Condition.visible)
+        $(byXpath(error), 1).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Пожалуйста, введите ваш адрес email."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Password field is empty")
     public RegisterPage verifyErrorPasswordFieldIsEmpty() {
-        $(byXpath(error), 2).shouldBe(Condition.visible)
+        $(byXpath(error), 2).shouldBe(visible)
                 .shouldHave(exactText("Error: Please enter a password."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Password Confirmation field is empty")
     public RegisterPage verifyErrorPasswordConfirmationFieldIsEmpty() {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("Error: Please enter a password."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when an incorrect user name is entered")
     public RegisterPage verifyErrorIncorrectUserNameIsEntered() {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Это имя пользователя некорректно, поскольку оно содержит недопустимые символы." +
                         " Пожалуйста, введите корректное имя пользователя."));
         return this;
@@ -91,14 +90,14 @@ public class RegisterPage {
 
     @Step("Verify the validation error is displayed when an incorrect email address is entered")
     public RegisterPage verifyErrorIncorrectEmailAddressIsEntered() {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Некорректный адрес email."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when passwords do not match")
     public RegisterPage verifyErrorPasswordsDoNotMatch() {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("Error: Passwords don’t match. " +
                         "Please enter the same password in both password fields."));
         return this;
@@ -106,7 +105,7 @@ public class RegisterPage {
 
     @Step("Verify that the duplicate email address error is displayed")
     public RegisterPage duplicateEmailAddressErrorIsDisplayed() {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Этот email уже зарегистрирован. Пожалуйста, введите другой."));
         return this;
     }

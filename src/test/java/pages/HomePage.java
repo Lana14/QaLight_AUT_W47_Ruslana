@@ -1,8 +1,6 @@
 package pages;
 
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;

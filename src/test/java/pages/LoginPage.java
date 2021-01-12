@@ -1,9 +1,8 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static logger.CustomLogger.logger;
@@ -19,14 +18,14 @@ public class LoginPage {
 
     @Step("Open the Register page")
     public RegisterPage openRegisterPage() {
-        $(byXpath(headerTitle)).shouldBe(Condition.visible);
-        $(byXpath(registerLink)).shouldBe(Condition.visible).click();
+        $(byXpath(headerTitle)).shouldBe(visible);
+        $(byXpath(registerLink)).shouldBe(visible).click();
         return new RegisterPage();
     }
 
     @Step("Insert user login")
     public LoginPage insertUserLoginName(String loginName) {
-        $(byXpath(headerTitle)).shouldBe(Condition.visible);
+        $(byXpath(headerTitle)).shouldBe(visible);
         $(byXpath(userLoginName)).sendKeys(loginName);
         return this;
     }
@@ -54,50 +53,50 @@ public class LoginPage {
 
     @Step("Verify that the logout message is displayed")
     public LoginPage verifyLogoutMessageIsDisplayed() {
-        $(byXpath(headerTitle)).shouldBe(Condition.visible);
-        $(byXpath(message)).shouldBe(Condition.visible)
+        $(byXpath(headerTitle)).shouldBe(visible);
+        $(byXpath(message)).shouldBe(visible)
                 .shouldHave(exactText("Вы вышли из системы."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the UserLoginName field is empty")
     public LoginPage verifyErrorUserLoginNameFieldIsEmpty() {
-        $(byXpath(error), 0).shouldBe(Condition.visible)
+        $(byXpath(error), 0).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Вы не ввели имя пользователя."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Password field is empty")
     public LoginPage verifyErrorPasswordFieldIsEmpty() {
-        $(byXpath(error), 1).shouldBe(Condition.visible)
+        $(byXpath(error), 1).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Вы не ввели пароль."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when unknown user name is entered")
     public LoginPage verifyErrorUnknownUserNameIsEntered() {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when unknown user email address is entered")
     public LoginPage verifyErrorUnknownUserEmailAddressIsEntered() {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("Неизвестный адрес email. Перепроверьте или попробуйте ваше имя пользователя."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when incorrect password is entered - Login with login name")
     public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithLoginName(String loginName) {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Введённый вами пароль пользователя " + loginName + " неверен. Забыли пароль?"));
         return this;
     }
 
     @Step("Verify the validation error is displayed when incorrect password is entered - Login with email")
     public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(String email) {
-        $(byXpath(error)).shouldBe(Condition.visible)
+        $(byXpath(error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Введённый вами пароль для адреса " + email + " неверен. Забыли пароль?"));
         return this;
     }
