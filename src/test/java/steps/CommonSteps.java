@@ -6,6 +6,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
+import utils.Props;
 
 import java.time.Instant;
 
@@ -43,19 +44,5 @@ public class CommonSteps {
     public static String createRandomAddress() {
         long unixTime = Instant.now().getEpochSecond();
         return USER_EMAIL_PREFIX + unixTime + "+" + RandomStringUtils.randomAlphabetic(10) + USER_EMAIL_SUFFIX;
-    }
-
-    @Step
-    public static String generateRandomUserName() {
-        String userName = "TestUser_" + Instant.now().getEpochSecond() + " "
-                + RandomStringUtils.randomAlphabetic(10);
-        return userName;
-    }
-
-    @Step
-    public static String generateRandomPassword() {
-        String password = "TestPassword@" + Instant.now().getEpochSecond()
-                + RandomStringUtils.randomAlphabetic(10) + "!$";
-        return password;
     }
 }

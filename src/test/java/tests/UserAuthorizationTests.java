@@ -44,10 +44,8 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when unknown user name is entered")
     void validationErrorAppearsWhenUnknownUserNameIsEntered() {
-        String loginName = generateRandomUserName();
-
         homePage.openLoginPage();
-        loginPage.insertUserLoginName(loginName)
+        loginPage.insertUserLoginName(Props.login)
                 .insertPassword(Constants.USER_PASSWORD)
                 .clickSubmitButton();
         loginPage.verifyErrorUnknownUserNameIsEntered();
@@ -66,22 +64,18 @@ public class UserAuthorizationTests extends BasePage {
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with login name")
     void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithUserName() {
-        String password = generateRandomPassword();
-
         homePage.openLoginPage();
         loginPage.insertUserLoginName(Constants.USER_LOGIN_NAME)
-                .insertPassword(password)
+                .insertPassword(Props.password)
                 .clickSubmitButton();
         loginPage.verifyErrorIncorrectPasswordIsEnteredLoginWithLoginName(Constants.USER_LOGIN_NAME);
     }
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with email")
     void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithEmail() {
-        String password = generateRandomPassword();
-
         homePage.openLoginPage();
         loginPage.insertUserLoginName(Constants.USER_EMAIL)
-                .insertPassword(password)
+                .insertPassword(Props.password)
                 .clickSubmitButton();
         loginPage.verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(Constants.USER_EMAIL);
     }

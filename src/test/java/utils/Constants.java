@@ -1,7 +1,6 @@
 package utils;
 
 public class Constants {
-    public static final String URL = "https://it-platforma.website";
     public static final String USER_EMAIL_PREFIX = "automation_test+";
     public static final String USER_EMAIL_SUFFIX = "@gmail.com";
     public static final String USER_LOGIN_NAME = "TestUser_1";
