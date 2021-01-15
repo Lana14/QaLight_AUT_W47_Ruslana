@@ -1,5 +1,6 @@
 package pages;
 
+import components.sidebar.RecentComments;
 import components.sidebar.RecentPosts;
 import components.sidebar.Search;
 import runners.LocalRunner;
@@ -11,5 +12,6 @@ public class BasePage extends LocalRunner {
     public DashboardPage dashboardPage = new DashboardPage();
     public Search search = new Search();
     public RecentPosts recentPosts = new RecentPosts();
+    public RecentComments recentComments = new RecentComments();
     public PostPage postPage = new PostPage();
 }

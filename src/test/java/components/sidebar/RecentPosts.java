@@ -7,11 +7,10 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RecentPosts {
-    String recentPost = "//div[@id='recent-posts-2']//a";
+    public static String recentPostInSidebar = "//div[@id='recent-posts-2']//a";
 
     @Step ("Open the recent post")
-    public RecentPosts clickRecentPost(int index) {
-        $(byXpath(recentPost), index).shouldBe(Condition.visible).click();
-        return this;
+    public void clickRecentPost(int index) {
+        $(byXpath(recentPostInSidebar), index).shouldBe(Condition.visible).click();
     }
 }

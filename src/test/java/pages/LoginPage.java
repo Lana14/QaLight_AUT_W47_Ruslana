@@ -45,9 +45,10 @@ public class LoginPage {
     @Step("Login as an authorized user")
     public DashboardPage loginAs(String userName, String password) {
         logger.info("Login as {}", userName);
-        insertUserLoginName(userName)
-                .insertPassword(password)
-                .clickSubmitButton();
+        $(byXpath(headerTitle)).shouldBe(visible);
+        insertUserLoginName(userName);
+        insertPassword(password);
+        clickSubmitButton();
         return new DashboardPage();
     }
 

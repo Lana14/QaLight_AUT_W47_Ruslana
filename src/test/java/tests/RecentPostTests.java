@@ -11,7 +11,7 @@ public class RecentPostTests extends BasePage {
         postPage.verifyRecentPostIsOpened(0);
     }
 
-    @Test(description = "Verify details of opened post")
+    @Test(description = "Verify details of opened post are displayed")
     void verifyDetailsOfOpenedPost() {
         recentPosts.clickRecentPost(1);
         postPage.verifyRecentPostIsOpened(1)
