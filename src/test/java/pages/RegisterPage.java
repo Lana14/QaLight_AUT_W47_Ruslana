@@ -7,76 +7,70 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RegisterPage {
-    String headerTitle = "//h1[text()='Регистрация']";
-    String userLoginName = "//input[@id='user_login']";
-    String userEmail = "//input[@id='user_email']";
-    String userPassword = "//input[@id='pass1']";
-    String userPasswordConfirmation = "//input[@id='pass2']";
-    String submitButton = "//button[@name='submit']";
-    String error = "//li[@class='tml-error']";
+    RegisterPageLocators registerPageLocators = new RegisterPageLocators();
 
     @Step("Insert user login")
     public RegisterPage insertUserLoginName(String loginName) {
-        $(byXpath(headerTitle)).shouldBe(visible);
-        $(byXpath(userLoginName)).sendKeys(loginName);
+        $(byXpath(registerPageLocators.headerTitle)).shouldBe(visible);
+        $(byXpath(registerPageLocators.userLoginName)).sendKeys(loginName);
         return this;
     }
 
     @Step("Insert email")
     public RegisterPage insertEmail(String email) {
-        $(byXpath(userEmail)).sendKeys(email);
+        $(byXpath(registerPageLocators.userEmail)).sendKeys(email);
         return this;
     }
 
     @Step("Insert password")
     public RegisterPage insertPassword(String password) {
-        $(byXpath(userPassword)).sendKeys(password);
+        $(byXpath(registerPageLocators.userPassword)).sendKeys(password);
         return this;
     }
 
     @Step("Confirm password")
     public RegisterPage confirmPassword(String password) {
-        $(byXpath(userPasswordConfirmation)).sendKeys(password);
+        $(byXpath(registerPageLocators.userPasswordConfirmation)).sendKeys(password);
         return this;
     }
 
     @Step("Submit the registration form")
     public HomePage clickSubmitButton() {
-        $(byXpath(submitButton)).shouldBe(visible).click();
+        $(byXpath(registerPageLocators.submitButton)).shouldBe(visible).click();
         return new HomePage();
     }
 
     @Step("Verify the validation error is displayed when the UserLoginName field is empty")
     public RegisterPage verifyErrorUserLoginNameFieldIsEmpty() {
-        $(byXpath(error), 0).shouldBe(visible)
+        $(byXpath(registerPageLocators.error), 0).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Пожалуйста, введите имя пользователя."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Email field is empty")
     public RegisterPage verifyErrorEmailFieldIsEmpty() {
-        $(byXpath(error), 1).shouldBe(visible)
+        $(byXpath(registerPageLocators.error), 1).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Пожалуйста, введите ваш адрес email."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Password field is empty")
     public RegisterPage verifyErrorPasswordFieldIsEmpty() {
-        $(byXpath(error), 2).shouldBe(visible)
+        $(byXpath(registerPageLocators.error), 2).shouldBe(visible)
                 .shouldHave(exactText("Error: Please enter a password."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when the Password Confirmation field is empty")
     public RegisterPage verifyErrorPasswordConfirmationFieldIsEmpty() {
-        $(byXpath(error)).shouldBe(visible)
+        $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("Error: Please enter a password."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when an incorrect user name is entered")
     public RegisterPage verifyErrorIncorrectUserNameIsEntered() {
-        $(byXpath(error)).shouldBe(visible)
+        $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Это имя пользователя некорректно, поскольку оно содержит недопустимые символы." +
                         " Пожалуйста, введите корректное имя пользователя."));
         return this;
@@ -84,20 +78,20 @@ public class RegisterPage {
 
     @Step
     public RegisterPage clearEmailField() {
-        $(byXpath(userEmail)).clear();
+        $(byXpath(registerPageLocators.userEmail)).clear();
         return this;
     }
 
     @Step("Verify the validation error is displayed when an incorrect email address is entered")
     public RegisterPage verifyErrorIncorrectEmailAddressIsEntered() {
-        $(byXpath(error)).shouldBe(visible)
+        $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Некорректный адрес email."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when passwords do not match")
     public RegisterPage verifyErrorPasswordsDoNotMatch() {
-        $(byXpath(error)).shouldBe(visible)
+        $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("Error: Passwords don’t match. " +
                         "Please enter the same password in both password fields."));
         return this;
@@ -105,7 +99,7 @@ public class RegisterPage {
 
     @Step("Verify that the duplicate email address error is displayed")
     public RegisterPage duplicateEmailAddressErrorIsDisplayed() {
-        $(byXpath(error)).shouldBe(visible)
+        $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Этот email уже зарегистрирован. Пожалуйста, введите другой."));
         return this;
     }

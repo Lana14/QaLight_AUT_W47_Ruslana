@@ -8,21 +8,19 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class DashboardPage {
-    String headerTitle = "//h1[text()='Консоль']";
-    String hello = "//p[@class='tml-dashboard-greeting']";
-    String logout = "//ul[@class='tml-dashboard-links']//a[text()='Выйти']";
+   DashboardPageLocators dashboardPageLocators = new DashboardPageLocators();
 
     @Step("Verify that the Dashboard page is opened after user login")
     public DashboardPage verifyDashboardPageIsOpenedAfterUserLogin(String userLoginName) {
-        $(byXpath(headerTitle)).shouldBe(Condition.visible);
-        $(byXpath(hello)).shouldBe(Condition.visible);
-        $(byXpath(hello)).shouldHave(exactText("Привет, " + userLoginName));
+        $(byXpath(dashboardPageLocators.headerTitle)).shouldBe(Condition.visible);
+        $(byXpath(dashboardPageLocators.hello)).shouldBe(Condition.visible);
+        $(byXpath(dashboardPageLocators.hello)).shouldHave(exactText("Привет, " + userLoginName));
         return this;
     }
 
     @Step("Logout from the Dashboard page")
     public LoginPage logOut() {
-        $(byXpath(logout)).click();
+        $(byXpath(dashboardPageLocators.logout)).click();
         return new LoginPage();
     }
 }
