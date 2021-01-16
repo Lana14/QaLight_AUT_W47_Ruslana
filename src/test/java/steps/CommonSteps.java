@@ -6,15 +6,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
-import utils.Props;
 
 import java.time.Instant;
 
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static utils.Constants.USER_EMAIL_PREFIX;
-import static utils.Constants.USER_EMAIL_SUFFIX;
+import static utils.Constants.*;
 
 public class CommonSteps {
     @Step

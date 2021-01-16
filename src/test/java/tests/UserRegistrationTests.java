@@ -1,5 +1,6 @@
 package tests;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import utils.*;
@@ -8,23 +9,22 @@ import static steps.CommonSteps.*;
 
 public class UserRegistrationTests extends BasePage {
 
-    @Test(description = "A new user can register successfully",
-            retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "A new user can register successfully")
     void signUp() {
         String email = createRandomAddress();
+        String name = User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10);
 
         homePage.openLoginPage();
         loginPage.openRegisterPage();
-        registerPage.insertUserLoginName(Props.login)
+        registerPage.insertUserLoginName(name)
                 .insertEmail(email)
-                .insertPassword(Props.password)
-                .confirmPassword(Props.password)
+                .insertPassword(User.PASSWORD.getValue())
+                .confirmPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
-        homePage.verifyHomePageIsOpenedByRegisteredUser(Props.login);
+        homePage.verifyHomePageIsOpenedByRegisteredUser(name);
     }
 
-    @Test(description = "Validation errors appear while submitting an empty registration form",
-            retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validation errors appear while submitting an empty registration form")
     void validationErrorsAppearWhileSubmittingEmptyRegistrationForm() {
         homePage.openLoginPage()
                 .openRegisterPage();
@@ -34,8 +34,7 @@ public class UserRegistrationTests extends BasePage {
                 .verifyErrorPasswordFieldIsEmpty();
     }
 
-    @Test(description = "Validation error appears when an incorrect user name is entered",
-            retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validation error appears when an incorrect user name is entered")
     void validationErrorAppearsWhenIncorrectUserNameIsEntered() {
         String email = createRandomAddress();
 
@@ -43,22 +42,21 @@ public class UserRegistrationTests extends BasePage {
                 .openRegisterPage();
         registerPage.insertUserLoginName("Test$")
                 .insertEmail(email)
-                .insertPassword(Props.password)
+                .insertPassword(User.PASSWORD.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .clickSubmitButton();
         registerPage.verifyErrorIncorrectUserNameIsEntered();
     }
 
-    @Test(description = "Validation error appears when an incorrect email address is entered",
-            retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validation error appears when an incorrect email address is entered")
     void validationErrorAppearsWhenIncorrectEmailAddressIsEntered() {
         String email = createRandomAddress();
 
         homePage.openLoginPage()
                 .openRegisterPage();
-        registerPage.insertUserLoginName(Props.login)
+        registerPage.insertUserLoginName(User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .insertEmail(email.replace(".", ""))
-                .insertPassword(Props.password)
-                .confirmPassword(Props.password)
+                .insertPassword(User.PASSWORD.getValue())
+                .confirmPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
         registerPage.verifyErrorIncorrectEmailAddressIsEntered()
                 .clearEmailField()
@@ -67,44 +65,41 @@ public class UserRegistrationTests extends BasePage {
         registerPage.verifyErrorIncorrectEmailAddressIsEntered();
     }
 
-    @Test(description = "Validation error appears when the password is not confirmed",
-            retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validation error appears when the password is not confirmed")
     void validationErrorAppearsWhenPasswordIsNotConfirmed() {
         String email = createRandomAddress();
 
         homePage.openLoginPage()
                 .openRegisterPage();
-        registerPage.insertUserLoginName(Props.login)
+        registerPage.insertUserLoginName(User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .insertEmail(email)
-                .insertPassword(Props.password)
+                .insertPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
         registerPage.verifyErrorPasswordConfirmationFieldIsEmpty();
     }
 
-    @Test(description = "Validation error appears when passwords do not match",
-            retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validation error appears when passwords do not match")
     void validationErrorAppearsWhenPasswordsDoNotMatch() {
         String email = createRandomAddress();
 
         homePage.openLoginPage()
                 .openRegisterPage();
-        registerPage.insertUserLoginName(Props.login)
+        registerPage.insertUserLoginName(User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .insertEmail(email)
-                .insertPassword(Props.password)
-                .confirmPassword(Constants.USER_PASSWORD)
+                .insertPassword(User.PASSWORD.getValue())
+                .confirmPassword(User.PASSWORD.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .clickSubmitButton();
         registerPage.verifyErrorPasswordsDoNotMatch();
     }
 
-    @Test(description = "Verify that User can't use a duplicated email while registration",
-            retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Verify that User can't use a duplicated email while registration")
     void duplicateEmailAddressError() {
         homePage.openLoginPage();
         loginPage.openRegisterPage();
-        registerPage.insertUserLoginName(Props.login)
-                .insertEmail(Constants.USER_EMAIL)
-                .insertPassword(Props.password)
-                .confirmPassword(Props.password)
+        registerPage.insertUserLoginName(User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10))
+                .insertEmail(User.EMAIL.getValue())
+                .insertPassword(User.PASSWORD.getValue())
+                .confirmPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
         registerPage.duplicateEmailAddressErrorIsDisplayed();
     }

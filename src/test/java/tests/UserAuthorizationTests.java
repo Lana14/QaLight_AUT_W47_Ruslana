@@ -1,5 +1,6 @@
 package tests;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import utils.*;
@@ -11,25 +12,25 @@ public class UserAuthorizationTests extends BasePage {
     @Test(description = "User can login successfully using registered user name")
     void logInWithRegisteredUserName() {
         homePage.openLoginPage();
-        loginPage.insertUserLoginName(Constants.USER_LOGIN_NAME)
-                .insertPassword(Constants.USER_PASSWORD)
+        loginPage.insertUserLoginName(User.NAME.getValue())
+                .insertPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
-        dashboardPage.verifyDashboardPageIsOpenedAfterUserLogin(Constants.USER_LOGIN_NAME);
+        dashboardPage.verifyDashboardPageIsOpenedAfterUserLogin(User.NAME.getValue());
     }
 
     @Test(description = "User can login successfully using registered user email address")
     void logInWithRegisteredUserEmailAddress() {
         homePage.openLoginPage();
-        loginPage.insertUserLoginName(Constants.USER_EMAIL)
-                .insertPassword(Constants.USER_PASSWORD)
+        loginPage.insertUserLoginName(User.EMAIL.getValue())
+                .insertPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
-        dashboardPage.verifyDashboardPageIsOpenedAfterUserLogin(Constants.USER_LOGIN_NAME);
+        dashboardPage.verifyDashboardPageIsOpenedAfterUserLogin(User.NAME.getValue());
     }
 
     @Test(description = "User can logout successfully")
     void logOut() {
         homePage.openLoginPage();
-        loginPage.loginAs(Constants.USER_LOGIN_NAME, Constants.USER_PASSWORD)
+        loginPage.loginAs(User.NAME.getValue(), User.PASSWORD.getValue())
                 .logOut()
                 .verifyLogoutMessageIsDisplayed();
     }
@@ -45,8 +46,8 @@ public class UserAuthorizationTests extends BasePage {
     @Test(description = "Validation error appears when unknown user name is entered")
     void validationErrorAppearsWhenUnknownUserNameIsEntered() {
         homePage.openLoginPage();
-        loginPage.insertUserLoginName(Props.login)
-                .insertPassword(Constants.USER_PASSWORD)
+        loginPage.insertUserLoginName(User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10))
+                .insertPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
         loginPage.verifyErrorUnknownUserNameIsEntered();
     }
@@ -57,26 +58,26 @@ public class UserAuthorizationTests extends BasePage {
 
         homePage.openLoginPage();
         loginPage.insertUserLoginName(email)
-                .insertPassword(Constants.USER_PASSWORD)
+                .insertPassword(User.PASSWORD.getValue())
                 .clickSubmitButton();
         loginPage.verifyErrorUnknownUserEmailAddressIsEntered();
     }
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with login name")
-    void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithUserName() {
+    void validationErrorAppearsWhenIncorrectPasswordIsEnteredWhileLogInWithUserName() {
         homePage.openLoginPage();
-        loginPage.insertUserLoginName(Constants.USER_LOGIN_NAME)
-                .insertPassword(Props.password)
+        loginPage.insertUserLoginName(User.NAME.getValue())
+                .insertPassword(User.PASSWORD.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .clickSubmitButton();
-        loginPage.verifyErrorIncorrectPasswordIsEnteredLoginWithLoginName(Constants.USER_LOGIN_NAME);
+        loginPage.verifyErrorIncorrectPasswordIsEnteredLoginWithLoginName(User.NAME.getValue());
     }
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with email")
-    void validationErrorAppearsWhenIncorrectPasswordIsEnteredLoginWithEmail() {
+    void validationErrorAppearsWhenIncorrectPasswordIsEnteredWhileLogInWithEmail() {
         homePage.openLoginPage();
-        loginPage.insertUserLoginName(Constants.USER_EMAIL)
-                .insertPassword(Props.password)
+        loginPage.insertUserLoginName(User.EMAIL.getValue())
+                .insertPassword(User.PASSWORD.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .clickSubmitButton();
-        loginPage.verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(Constants.USER_EMAIL);
+        loginPage.verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(User.EMAIL.getValue());
     }
 }

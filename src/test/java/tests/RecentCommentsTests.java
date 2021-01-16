@@ -3,7 +3,7 @@ package tests;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import utils.Constants;
+import utils.User;
 
 public class RecentCommentsTests extends BasePage {
 
@@ -18,8 +18,8 @@ public class RecentCommentsTests extends BasePage {
         String testComment = "Test comment " + RandomStringUtils.randomAlphabetic(10);
 
         homePage.openLoginPage();
-        loginPage.loginAs(Constants.USER_LOGIN_NAME, Constants.USER_PASSWORD);
-        dashboardPage.verifyDashboardPageIsOpenedAfterUserLogin(Constants.USER_LOGIN_NAME);
+        loginPage.loginAs(User.NAME.getValue(), User.PASSWORD.getValue());
+        dashboardPage.verifyDashboardPageIsOpenedAfterUserLogin(User.NAME.getValue());
         recentComments.clickRecentComment(0);
         postPage.verifyAddCommentSectionIsDisplayed()
                 .addComment(testComment)
