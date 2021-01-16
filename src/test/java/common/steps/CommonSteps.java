@@ -1,4 +1,4 @@
-package steps;
+package common.steps;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -12,9 +12,11 @@ import java.time.Instant;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static utils.Constants.*;
+import static common.utils.Constants.USER_EMAIL_PREFIX;
+import static common.utils.Constants.USER_EMAIL_SUFFIX;
 
 public class CommonSteps {
+
     @Step
     public static void checkUrl(String mustContains, int timeout) {
         boolean conditionForUrl = false;

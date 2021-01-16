@@ -5,7 +5,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static steps.CommonSteps.checkUrl;
+import static common.steps.CommonSteps.checkUrl;
 
 public class HomePage {
     HomePageLocators homePageLocators = new HomePageLocators();

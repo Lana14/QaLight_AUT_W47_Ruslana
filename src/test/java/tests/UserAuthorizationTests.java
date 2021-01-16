@@ -3,9 +3,9 @@ package tests;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import utils.*;
+import common.utils.*;
 
-import static steps.CommonSteps.*;
+import static common.steps.CommonSteps.createRandomAddress;
 
 public class UserAuthorizationTests extends BasePage {
 
@@ -36,7 +36,7 @@ public class UserAuthorizationTests extends BasePage {
     }
 
     @Test(description = "Validation errors appear while submitting an empty login form")
-    void validationErrorsAppearWhileSubmittingEmptyLoginForm() {
+    void verifyValidationErrorsAppearWhileSubmittingEmptyLoginForm() {
         homePage.openLoginPage();
         loginPage.clickSubmitButton();
         loginPage.verifyErrorUserLoginNameFieldIsEmpty()
@@ -44,7 +44,7 @@ public class UserAuthorizationTests extends BasePage {
     }
 
     @Test(description = "Validation error appears when unknown user name is entered")
-    void validationErrorAppearsWhenUnknownUserNameIsEntered() {
+    void verifyValidationErrorAppearsWhenUnknownUserNameIsEntered() {
         homePage.openLoginPage();
         loginPage.insertUserLoginName(User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10))
                 .insertPassword(User.PASSWORD.getValue())
@@ -53,7 +53,7 @@ public class UserAuthorizationTests extends BasePage {
     }
 
     @Test(description = "Validation error appears when unknown user email address is entered")
-    void validationErrorAppearsWhenUnknownUserEmailAddressIsEntered() {
+    void verifyValidationErrorAppearsWhenUnknownUserEmailAddressIsEntered() {
         String email = createRandomAddress();
 
         homePage.openLoginPage();
@@ -64,7 +64,7 @@ public class UserAuthorizationTests extends BasePage {
     }
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with login name")
-    void validationErrorAppearsWhenIncorrectPasswordIsEnteredWhileLogInWithUserName() {
+    void verifyValidationErrorAppearsWhenIncorrectPasswordIsEnteredWhileLogInWithUserName() {
         homePage.openLoginPage();
         loginPage.insertUserLoginName(User.NAME.getValue())
                 .insertPassword(User.PASSWORD.getValue() + RandomStringUtils.randomAlphabetic(10))
@@ -73,7 +73,7 @@ public class UserAuthorizationTests extends BasePage {
     }
 
     @Test(description = "Validation error appears when incorrect password is entered - Login with email")
-    void validationErrorAppearsWhenIncorrectPasswordIsEnteredWhileLogInWithEmail() {
+    void verifyValidationErrorAppearsWhenIncorrectPasswordIsEnteredWhileLogInWithEmail() {
         homePage.openLoginPage();
         loginPage.insertUserLoginName(User.EMAIL.getValue())
                 .insertPassword(User.PASSWORD.getValue() + RandomStringUtils.randomAlphabetic(10))

@@ -3,9 +3,11 @@ package tests;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import utils.*;
+import common.utils.*;
 
-import static steps.CommonSteps.*;
+import static common.steps.CommonSteps.*;
+import static common.utils.CsvWriter.writeToCSVFile;
+import static common.utils.ExcelWriter.writeToExcelFile;
 
 public class UserRegistrationTests extends BasePage {
 
@@ -13,15 +15,18 @@ public class UserRegistrationTests extends BasePage {
     void signUp() {
         String email = createRandomAddress();
         String name = User.NAME.getValue() + RandomStringUtils.randomAlphabetic(10);
+        String password = User.PASSWORD.getValue() + RandomStringUtils.randomAlphabetic(10);
 
         homePage.openLoginPage();
         loginPage.openRegisterPage();
         registerPage.insertUserLoginName(name)
                 .insertEmail(email)
-                .insertPassword(User.PASSWORD.getValue())
-                .confirmPassword(User.PASSWORD.getValue())
+                .insertPassword(password)
+                .confirmPassword(password)
                 .clickSubmitButton();
         homePage.verifyHomePageIsOpenedByRegisteredUser(name);
+        writeToExcelFile(name, email, password);
+        writeToCSVFile(name, email, password, true);
     }
 
     @Test(description = "Validation errors appear while submitting an empty registration form")

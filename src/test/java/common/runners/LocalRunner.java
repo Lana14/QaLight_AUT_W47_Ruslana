@@ -1,16 +1,16 @@
-package runners;
+package common.runners;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import utils.Props;
+import common.utils.Props;
 
 import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.open;
-import static utils.Props.*;
+import static common.utils.Props.*;
 
 public class LocalRunner {
 

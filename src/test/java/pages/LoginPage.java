@@ -5,7 +5,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static logger.CustomLogger.logger;
+import static common.logger.CustomLogger.logger;
 
 public class LoginPage {
     LoginPageLocators loginPageLocators = new LoginPageLocators();

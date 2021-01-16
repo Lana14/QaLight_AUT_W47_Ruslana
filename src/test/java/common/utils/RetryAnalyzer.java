@@ -1,9 +1,9 @@
-package utils;
+package common.utils;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-import static logger.CustomLogger.logger;
+import static common.logger.CustomLogger.logger;
 
 public class RetryAnalyzer implements IRetryAnalyzer {
     private int retryCount = 1;

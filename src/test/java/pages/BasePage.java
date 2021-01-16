@@ -3,7 +3,7 @@ package pages;
 import components.sidebar.RecentComments;
 import components.sidebar.RecentPosts;
 import components.sidebar.Search;
-import runners.LocalRunner;
+import common.runners.LocalRunner;
 
 public class BasePage extends LocalRunner {
     public HomePage homePage = new HomePage();

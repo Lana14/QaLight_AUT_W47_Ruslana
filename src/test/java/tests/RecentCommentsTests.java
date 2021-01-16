@@ -3,7 +3,7 @@ package tests;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import utils.User;
+import common.utils.*;
 
 public class RecentCommentsTests extends BasePage {
 
