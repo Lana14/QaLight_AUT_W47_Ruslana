@@ -13,7 +13,7 @@ public class ExcelWriter {
 
     @Step
     public static void writeToExcelFile(String var1, String var2, String var3) {
-        String excelFilePath = "src/test/java/common/test_data/Users.xlsx";
+        String excelFilePath = "src/test/java/common/test_data/users/Users.xlsx";
         try {
             FileInputStream inputStream = new FileInputStream(excelFilePath);
             Workbook workbook = WorkbookFactory.create(inputStream);

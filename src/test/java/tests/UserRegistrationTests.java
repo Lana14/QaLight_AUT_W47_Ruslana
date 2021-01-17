@@ -1,9 +1,9 @@
 package tests;
 
+import common.test_data.users.User;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import common.utils.*;
 
 import static common.steps.CommonSteps.*;
 import static common.utils.CsvWriter.writeToCSVFile;

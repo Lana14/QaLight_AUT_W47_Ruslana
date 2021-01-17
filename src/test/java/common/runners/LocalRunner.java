@@ -5,12 +5,12 @@ import com.codeborne.selenide.Selenide;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import common.utils.Props;
+import common.utils.config.Props;
 
 import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.open;
-import static common.utils.Props.*;
+import static common.utils.config.Props.*;
 
 public class LocalRunner {
 

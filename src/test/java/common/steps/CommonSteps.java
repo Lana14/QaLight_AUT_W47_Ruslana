@@ -12,8 +12,8 @@ import java.time.Instant;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static common.utils.Constants.USER_EMAIL_PREFIX;
-import static common.utils.Constants.USER_EMAIL_SUFFIX;
+import static common.test_data.users.Constants.USER_EMAIL_PREFIX;
+import static common.test_data.users.Constants.USER_EMAIL_SUFFIX;
 
 public class CommonSteps {
 

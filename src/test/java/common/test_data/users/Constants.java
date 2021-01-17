@@ -1,4 +1,4 @@
-package common.utils;
+package common.test_data.users;
 
 public class Constants {
     public static final String USER_EMAIL_PREFIX = "automation_test+";

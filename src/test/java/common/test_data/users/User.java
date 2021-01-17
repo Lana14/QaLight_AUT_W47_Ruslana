@@ -1,4 +1,4 @@
-package common.utils;
+package common.test_data.users;
 
 public enum User {
     NAME("TestUser_1"),
