@@ -6,8 +6,8 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Condition.*;
-import static components.sidebar.RecentComments.recentCommentInSidebar;
-import static components.sidebar.RecentPosts.recentPostInSidebar;
+import static pages.components.sidebar.RecentComments.recentCommentInSidebar;
+import static pages.components.sidebar.RecentPosts.recentPostInSidebar;
 
 public class PostPage {
     PostPageLocators postPageLocators = new PostPageLocators();

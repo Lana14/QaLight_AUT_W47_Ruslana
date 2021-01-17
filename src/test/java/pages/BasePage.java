@@ -1,8 +1,8 @@
 package pages;
 
-import components.sidebar.RecentComments;
-import components.sidebar.RecentPosts;
-import components.sidebar.Search;
+import pages.components.sidebar.RecentComments;
+import pages.components.sidebar.RecentPosts;
+import pages.components.sidebar.Search;
 import common.runners.LocalRunner;
 
 public class BasePage extends LocalRunner {

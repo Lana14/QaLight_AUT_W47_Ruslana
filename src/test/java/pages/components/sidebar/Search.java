@@ -1,4 +1,4 @@
-package components.sidebar;
+package pages.components.sidebar;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
