@@ -12,14 +12,9 @@ import static common.utils.GoogleSheetParser.getGoogleSheetValue;
 public class RecentPostTests extends BasePage {
 
     @Test(description = "Verify the recent post is opened")
-    void verifyRecentPostIsOpened() throws IOException, GeneralSecurityException {
+    void verifyRecentPostIsOpened() {
         recentPosts.clickRecentPost(0);
         postPage.verifyRecentPostIsOpened(0);
-        String spreadsheetId = "1b0U_SyiPhYDv6ognBEONHkcTZLnfpHh7IaamYy_uYQ8";
-        String range = "Exam!A2:I24";
-        for (List<Object> asd : getGoogleSheetValue(spreadsheetId, range)) {
-            System.out.println(asd);
-        }
     }
 
     @Test(description = "Verify details of opened post are displayed")
@@ -27,5 +22,14 @@ public class RecentPostTests extends BasePage {
         recentPosts.clickRecentPost(1);
         postPage.verifyRecentPostIsOpened(1)
                 .verifyPostDetails();
+    }
+
+    @Test(description = "Get new topics for recent posts")
+    void getNewTopicsForRecentPosts() throws IOException, GeneralSecurityException {
+        String spreadsheetId = "1ojvfbEPjDeFX2AY_nzTGT-g3n9mZZCjSzzP9MDWSkFw";
+        String range = "Sport!A2:A7";
+        for (List<Object> asd : getGoogleSheetValue(spreadsheetId, range)) {
+            System.out.println(asd);
+        }
     }
 }

@@ -2,11 +2,8 @@ package common.runners;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import common.utils.config.Props;
-import org.testng.annotations.Parameters;
 
 import java.io.IOException;
 
@@ -17,13 +14,20 @@ public class LocalRunner {
 
     @BeforeClass()
     @Parameters("browser")
-    public void setUp(String browser) {
+    public void setUp(@Optional String browser) {
         Configuration.timeout = 30000;
         Configuration.startMaximized = true;
-        if (browser.equals("firefox")) {
-            Configuration.browser = "firefox";
-        } else if (browser.equals("chrome")) {
-            Configuration.browser = "chrome";
+        try {
+            switch (browser) {
+                case "chrome":
+                    Configuration.browser = "chrome";
+                    break;
+                case "firefox":
+                    Configuration.browser = "firefox";
+                    break;
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Browser is not defined");
         }
     }
 

@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Search {
     String search = "//input[@type='search']";
-    String searchEntryTitle = "//div[@class='search-entry-content clr'][1]//a[@title='Neque adipiscing an cursus']";
+    String topSearchResult = "(//div[@class='search-entry-content clr'])[1]";
     String pageContent = "//div[@class='page-content']";
 
     @Step("Enter value into the Search field")
@@ -22,7 +22,7 @@ public class Search {
 
     @Step("Verify search result list contains results with the searched value")
     public Search searchedValueIsFound(String searchValue) {
-        $(byXpath(searchEntryTitle)).shouldBe(visible)
+        $(byXpath(topSearchResult)).shouldBe(visible)
                 .shouldHave(text(searchValue));
         return this;
     }
