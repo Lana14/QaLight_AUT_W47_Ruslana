@@ -6,11 +6,11 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class RecentPosts {
-    public static String recentPostInSidebar = "//div[@id='recent-posts-2']//a";
+public class RecentPostsSidebar {
+    RecentPostsSidebarLocators recentPostsSidebarLocators = new RecentPostsSidebarLocators();
 
-    @Step ("Open the recent post")
+    @Step("Open the recent post")
     public void clickRecentPost(int index) {
-        $(byXpath(recentPostInSidebar), index).shouldBe(Condition.visible).click();
+        $(byXpath(recentPostsSidebarLocators.recentPost), index).shouldBe(Condition.visible).click();
     }
 }

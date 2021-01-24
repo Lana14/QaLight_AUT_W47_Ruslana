@@ -1,8 +1,8 @@
 package pages;
 
-import pages.components.sidebar.RecentComments;
-import pages.components.sidebar.RecentPosts;
-import pages.components.sidebar.Search;
+import pages.components.sidebar.RecentCommentsSidebar;
+import pages.components.sidebar.RecentPostsSidebar;
+import pages.components.sidebar.SearchSidebar;
 import common.runners.LocalRunner;
 
 public class BasePage extends LocalRunner {
@@ -10,8 +10,8 @@ public class BasePage extends LocalRunner {
     public LoginPage loginPage = new LoginPage();
     public RegisterPage registerPage = new RegisterPage();
     public DashboardPage dashboardPage = new DashboardPage();
-    public Search search = new Search();
-    public RecentPosts recentPosts = new RecentPosts();
-    public RecentComments recentComments = new RecentComments();
+    public SearchSidebar searchSidebar = new SearchSidebar();
+    public RecentPostsSidebar recentPostsSidebar = new RecentPostsSidebar();
+    public RecentCommentsSidebar recentCommentsSidebar = new RecentCommentsSidebar();
     public PostPage postPage = new PostPage();
 }

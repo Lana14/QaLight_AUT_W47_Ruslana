@@ -20,7 +20,7 @@ public class SearchTests extends BasePage {
 
     @Test(description = "Verified searched value is found successfully", dataProvider = "SearchDataProvider")
     void verifySearchedValueIsFound(String value) {
-        search.enterAndSearchValue(value)
+        searchSidebar.enterAndSearchValue(value)
                 .searchedValueIsFound(value);
     }
 
@@ -28,7 +28,7 @@ public class SearchTests extends BasePage {
     void verifySearchedValueIsNotFound() {
         String notFoundValue = "Test";
 
-        search.enterAndSearchValue(notFoundValue)
-                .searchedValueIsNotFound(notFoundValue);
+        searchSidebar.enterAndSearchValue(notFoundValue)
+                .searchedValueIsNotFound();
     }
 }

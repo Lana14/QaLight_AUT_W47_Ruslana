@@ -2,21 +2,23 @@ package pages;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import pages.components.sidebar.RecentCommentsSidebarLocators;
+import pages.components.sidebar.RecentPostsSidebarLocators;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Condition.*;
-import static pages.components.sidebar.RecentComments.recentCommentInSidebar;
-import static pages.components.sidebar.RecentPosts.recentPostInSidebar;
 
 public class PostPage {
     PostPageLocators postPageLocators = new PostPageLocators();
+    RecentPostsSidebarLocators recentPostsSidebarLocators = new RecentPostsSidebarLocators();
+    RecentCommentsSidebarLocators recentCommentsSidebarLocators = new RecentCommentsSidebarLocators();
 
     @Step("Verify the recent post is opened")
     public PostPage verifyRecentPostIsOpened(int index) {
         $(byXpath(postPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(postPageLocators.post)).shouldBe(visible)
-                .shouldHave(exactText($(byXpath(recentPostInSidebar), index).getText()));
+                .shouldHave(exactText($(byXpath(recentPostsSidebarLocators.recentPost), index).getText()));
         return this;
     }
 
@@ -33,7 +35,7 @@ public class PostPage {
     public PostPage verifyRecentCommentIsDisplayedForRelevantPost(int index) {
         $(byXpath(postPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(postPageLocators.post)).shouldBe(visible)
-                .shouldHave(exactText($(byXpath(recentCommentInSidebar), index).getText()));
+                .shouldHave(exactText($(byXpath(recentCommentsSidebarLocators.recentComment), index).getText()));
         $(byXpath(postPageLocators.lastComment)).shouldBe(visible);
         return this;
     }

@@ -9,7 +9,7 @@ public class RecentCommentsTests extends BasePage {
 
     @Test(description = "Verify the recent comment can be opened from the sidebar")
     void verifyRecentPostIsOpened() {
-        recentComments.clickRecentComment(0);
+        recentCommentsSidebar.clickRecentComment(0);
         postPage.verifyRecentCommentIsDisplayedForRelevantPost(0);
     }
 
@@ -20,7 +20,7 @@ public class RecentCommentsTests extends BasePage {
         homePage.openLoginPage();
         loginPage.loginAs(User.NAME.getValue(), User.PASSWORD.getValue());
         dashboardPage.verifyDashboardPageIsOpenedAfterUserLogin(User.NAME.getValue());
-        recentComments.clickRecentComment(0);
+        recentCommentsSidebar.clickRecentComment(0);
         postPage.verifyAddCommentSectionIsDisplayed()
                 .addComment(testComment)
                 .verifyAddedCommentIsDisplayed(testComment);
