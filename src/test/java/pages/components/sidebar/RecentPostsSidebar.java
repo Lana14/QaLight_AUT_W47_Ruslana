@@ -11,6 +11,7 @@ public class RecentPostsSidebar {
 
     @Step("Open the recent post")
     public void clickRecentPost(int index) {
-        $(byXpath(recentPostsSidebarLocators.recentPost), index).shouldBe(Condition.visible).click();
+        $(byXpath(recentPostsSidebarLocators.recentPost), index)
+                .shouldBe(Condition.visible).click();
     }
 }

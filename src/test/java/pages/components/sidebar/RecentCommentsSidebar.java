@@ -11,6 +11,7 @@ public class RecentCommentsSidebar {
 
     @Step("Open the recent comment")
     public void clickRecentComment(int index) {
-        $(byXpath(recentCommentsSidebarLocators.recentComment), index).shouldBe(Condition.visible).click();
+        $(byXpath(recentCommentsSidebarLocators.recentComment), index)
+                .shouldBe(Condition.visible).click();
     }
 }

@@ -71,28 +71,32 @@ public class LoginPage {
     @Step("Verify the validation error is displayed when unknown user name is entered")
     public LoginPage verifyErrorUnknownUserNameIsEntered() {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
-                .shouldHave(exactText("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email."));
+                .shouldHave(exactText("Неизвестное имя пользователя. " +
+                        "Перепроверьте или попробуйте ваш адрес email."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when unknown user email address is entered")
     public LoginPage verifyErrorUnknownUserEmailAddressIsEntered() {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
-                .shouldHave(exactText("Неизвестный адрес email. Перепроверьте или попробуйте ваше имя пользователя."));
+                .shouldHave(exactText("Неизвестный адрес email. " +
+                        "Перепроверьте или попробуйте ваше имя пользователя."));
         return this;
     }
 
     @Step("Verify the validation error is displayed when incorrect password is entered - Login with login name")
     public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithLoginName(String loginName) {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
-                .shouldHave(exactText("ОШИБКА: Введённый вами пароль пользователя " + loginName + " неверен. Забыли пароль?"));
+                .shouldHave(exactText("ОШИБКА: Введённый вами пароль пользователя "
+                        + loginName + " неверен. Забыли пароль?"));
         return this;
     }
 
     @Step("Verify the validation error is displayed when incorrect password is entered - Login with email")
     public LoginPage verifyErrorIncorrectPasswordIsEnteredLoginWithUserEmail(String email) {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
-                .shouldHave(exactText("ОШИБКА: Введённый вами пароль для адреса " + email + " неверен. Забыли пароль?"));
+                .shouldHave(exactText("ОШИБКА: Введённый вами пароль для адреса "
+                        + email + " неверен. Забыли пароль?"));
         return this;
     }
 }

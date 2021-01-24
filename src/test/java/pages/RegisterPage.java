@@ -71,7 +71,8 @@ public class RegisterPage {
     @Step("Verify the validation error is displayed when an incorrect user name is entered")
     public RegisterPage verifyErrorIncorrectUserNameIsEntered() {
         $(byXpath(registerPageLocators.error)).shouldBe(visible)
-                .shouldHave(exactText("ОШИБКА: Это имя пользователя некорректно, поскольку оно содержит недопустимые символы." +
+                .shouldHave(exactText("ОШИБКА: Это имя пользователя некорректно, " +
+                        "поскольку оно содержит недопустимые символы." +
                         " Пожалуйста, введите корректное имя пользователя."));
         return this;
     }

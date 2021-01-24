@@ -18,7 +18,8 @@ public class PostPage {
     public PostPage verifyRecentPostIsOpened(int index) {
         $(byXpath(postPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(postPageLocators.post)).shouldBe(visible)
-                .shouldHave(exactText($(byXpath(recentPostsSidebarLocators.recentPost), index).getText()));
+                .shouldHave(exactText($(byXpath(recentPostsSidebarLocators.recentPost), index)
+                        .getText()));
         return this;
     }
 
@@ -35,7 +36,8 @@ public class PostPage {
     public PostPage verifyRecentCommentIsDisplayedForRelevantPost(int index) {
         $(byXpath(postPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(postPageLocators.post)).shouldBe(visible)
-                .shouldHave(exactText($(byXpath(recentCommentsSidebarLocators.recentComment), index).getText()));
+                .shouldHave(exactText($(byXpath(recentCommentsSidebarLocators.recentComment), index)
+                        .getText()));
         $(byXpath(postPageLocators.lastComment)).shouldBe(visible);
         return this;
     }
