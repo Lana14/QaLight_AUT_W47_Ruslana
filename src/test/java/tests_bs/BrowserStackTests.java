@@ -1,4 +1,4 @@
-package bs_tests;
+package tests_bs;
 
 import common.test_data.users.User;
 import org.testng.annotations.Test;

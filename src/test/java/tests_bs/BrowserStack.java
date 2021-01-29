@@ -1,4 +1,4 @@
-package bs_tests;
+package tests_bs;
 
 import com.codeborne.selenide.WebDriverRunner;
 import common.utils.config.Props;
