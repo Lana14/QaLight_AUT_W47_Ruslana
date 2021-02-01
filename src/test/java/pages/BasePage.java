@@ -1,5 +1,6 @@
 package pages;
 
+import common.runners.SelenoidRunner;
 import pages.components.sidebar.RecentCommentsSidebar;
 import pages.components.sidebar.RecentPostsSidebar;
 import pages.components.sidebar.SearchSidebar;

@@ -19,15 +19,11 @@ import static common.utils.config.Props.resetProperties;
 
 public class SelenoidRunner {
 
-    @BeforeClass(alwaysRun = true)
-    public void setUp() {
+    @BeforeMethod(alwaysRun = true)
+    public void setUp() throws IOException {
         globalDevice = "Desktop";
         SelenoidConfig selenoidConfig = new SelenoidConfig();
         selenoidConfig.createWebDriverInstance();
-    }
-
-    @BeforeMethod
-    public void openUrl() throws IOException {
         initProperties();
         open(Props.website_url);
     }

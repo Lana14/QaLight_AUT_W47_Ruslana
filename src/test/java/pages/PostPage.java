@@ -3,7 +3,6 @@ package pages;
 import common.logger.CustomLogger;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import pages.components.sidebar.RecentCommentsSidebarLocators;
 import pages.components.sidebar.RecentPostsSidebarLocators;
 
