@@ -1,5 +1,6 @@
 package pages.components.sidebar;
 
+import common.logger.CustomLogger;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
@@ -15,6 +16,7 @@ public class SearchSidebar {
         $(byXpath(searchSidebarLocators.search)).shouldBe(visible);
         $(byXpath(searchSidebarLocators.search)).sendKeys(text);
         $(byXpath(searchSidebarLocators.search)).sendKeys(Keys.ENTER);
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -22,6 +24,7 @@ public class SearchSidebar {
     public SearchSidebar searchedValueIsFound(String searchValue) {
         $(byXpath(searchSidebarLocators.topSearchResult)).shouldBe(visible)
                 .shouldHave(text(searchValue));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -30,6 +33,7 @@ public class SearchSidebar {
         $(byXpath(searchSidebarLocators.pageContent)).shouldBe(visible)
                 .shouldHave(exactText("Извините, но по вашему запросу ничего не найдено. " +
                         "Пожалуйста, попробуйте снова, пользуясь другими ключевыми словами."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 }

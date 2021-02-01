@@ -1,6 +1,7 @@
 package pages.components.sidebar;
 
 import com.codeborne.selenide.Condition;
+import common.logger.CustomLogger;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -13,5 +14,6 @@ public class RecentCommentsSidebar {
     public void clickRecentComment(int index) {
         $(byXpath(recentCommentsSidebarLocators.recentComment), index)
                 .shouldBe(Condition.visible).click();
+        CustomLogger.logger.info("ok");
     }
 }

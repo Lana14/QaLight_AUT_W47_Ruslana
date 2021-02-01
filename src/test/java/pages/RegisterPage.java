@@ -1,5 +1,6 @@
 package pages;
 
+import common.logger.CustomLogger;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
@@ -13,30 +14,35 @@ public class RegisterPage {
     public RegisterPage insertUserLoginName(String loginName) {
         $(byXpath(registerPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(registerPageLocators.userLoginName)).sendKeys(loginName);
+        CustomLogger.logger.info("ok");
         return this;
     }
 
     @Step("Insert email")
     public RegisterPage insertEmail(String email) {
         $(byXpath(registerPageLocators.userEmail)).sendKeys(email);
+        CustomLogger.logger.info("ok");
         return this;
     }
 
     @Step("Insert password")
     public RegisterPage insertPassword(String password) {
         $(byXpath(registerPageLocators.userPassword)).sendKeys(password);
+        CustomLogger.logger.info("ok");
         return this;
     }
 
     @Step("Confirm password")
     public RegisterPage confirmPassword(String password) {
         $(byXpath(registerPageLocators.userPasswordConfirmation)).sendKeys(password);
+        CustomLogger.logger.info("ok");
         return this;
     }
 
     @Step("Submit the registration form")
     public HomePage clickSubmitButton() {
         $(byXpath(registerPageLocators.submitButton)).shouldBe(visible).click();
+        CustomLogger.logger.info("ok");
         return new HomePage();
     }
 
@@ -44,6 +50,7 @@ public class RegisterPage {
     public RegisterPage verifyErrorUserLoginNameFieldIsEmpty() {
         $(byXpath(registerPageLocators.error), 0).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Пожалуйста, введите имя пользователя."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -51,6 +58,7 @@ public class RegisterPage {
     public RegisterPage verifyErrorEmailFieldIsEmpty() {
         $(byXpath(registerPageLocators.error), 1).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Пожалуйста, введите ваш адрес email."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -58,6 +66,7 @@ public class RegisterPage {
     public RegisterPage verifyErrorPasswordFieldIsEmpty() {
         $(byXpath(registerPageLocators.error), 2).shouldBe(visible)
                 .shouldHave(exactText("Error: Please enter a password."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -65,6 +74,7 @@ public class RegisterPage {
     public RegisterPage verifyErrorPasswordConfirmationFieldIsEmpty() {
         $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("Error: Please enter a password."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -74,12 +84,14 @@ public class RegisterPage {
                 .shouldHave(exactText("ОШИБКА: Это имя пользователя некорректно, " +
                         "поскольку оно содержит недопустимые символы." +
                         " Пожалуйста, введите корректное имя пользователя."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
     @Step
     public RegisterPage clearEmailField() {
         $(byXpath(registerPageLocators.userEmail)).clear();
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -87,6 +99,7 @@ public class RegisterPage {
     public RegisterPage verifyErrorIncorrectEmailAddressIsEntered() {
         $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Некорректный адрес email."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -95,6 +108,7 @@ public class RegisterPage {
         $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("Error: Passwords don’t match. " +
                         "Please enter the same password in both password fields."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -102,6 +116,7 @@ public class RegisterPage {
     public RegisterPage duplicateEmailAddressErrorIsDisplayed() {
         $(byXpath(registerPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Этот email уже зарегистрирован. Пожалуйста, введите другой."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 }

@@ -14,10 +14,9 @@ public class LocalRunner {
 
     @BeforeClass()
     @Parameters("browser")
-    public void setUp(@Optional String browser) {
+    public void setUp(@Optional("chrome") String browser) {
         Configuration.timeout = 30000;
         Configuration.startMaximized = true;
-        try {
             switch (browser) {
                 case "chrome":
                     Configuration.browser = "chrome";
@@ -26,9 +25,6 @@ public class LocalRunner {
                     Configuration.browser = "firefox";
                     break;
             }
-        } catch (NullPointerException e) {
-            System.out.println("Browser is not defined");
-        }
     }
 
     @BeforeMethod

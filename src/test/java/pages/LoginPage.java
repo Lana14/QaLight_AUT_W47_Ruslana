@@ -1,5 +1,6 @@
 package pages;
 
+import common.logger.CustomLogger;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
@@ -14,6 +15,7 @@ public class LoginPage {
     public RegisterPage openRegisterPage() {
         $(byXpath(loginPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(loginPageLocators.registerLink)).shouldBe(visible).click();
+        CustomLogger.logger.info("ok");
         return new RegisterPage();
     }
 
@@ -21,28 +23,31 @@ public class LoginPage {
     public LoginPage insertUserLoginName(String loginName) {
         $(byXpath(loginPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(loginPageLocators.userLoginName)).sendKeys(loginName);
+        CustomLogger.logger.info("ok");
         return this;
     }
 
     @Step("Insert password")
     public LoginPage insertPassword(String password) {
         $(byXpath(loginPageLocators.userPassword)).sendKeys(password);
+        CustomLogger.logger.info("ok");
         return this;
     }
 
     @Step("Submit the authorization credentials")
     public DashboardPage clickSubmitButton() {
         $(byXpath(loginPageLocators.submitButton)).click();
+        CustomLogger.logger.info("ok");
         return new DashboardPage();
     }
 
     @Step("Login as an authorized user")
     public DashboardPage loginAs(String userName, String password) {
-        logger.info("Login as {}", userName);
         $(byXpath(loginPageLocators.headerTitle)).shouldBe(visible);
         insertUserLoginName(userName);
         insertPassword(password);
         clickSubmitButton();
+        CustomLogger.logger.info("ok");
         return new DashboardPage();
     }
 
@@ -51,6 +56,7 @@ public class LoginPage {
         $(byXpath(loginPageLocators.headerTitle)).shouldBe(visible);
         $(byXpath(loginPageLocators.message)).shouldBe(visible)
                 .shouldHave(exactText("Вы вышли из системы."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -58,6 +64,7 @@ public class LoginPage {
     public LoginPage verifyErrorUserLoginNameFieldIsEmpty() {
         $(byXpath(loginPageLocators.error), 0).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Вы не ввели имя пользователя."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -65,6 +72,7 @@ public class LoginPage {
     public LoginPage verifyErrorPasswordFieldIsEmpty() {
         $(byXpath(loginPageLocators.error), 1).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Вы не ввели пароль."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -73,6 +81,7 @@ public class LoginPage {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("Неизвестное имя пользователя. " +
                         "Перепроверьте или попробуйте ваш адрес email."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -81,6 +90,7 @@ public class LoginPage {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("Неизвестный адрес email. " +
                         "Перепроверьте или попробуйте ваше имя пользователя."));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -89,6 +99,7 @@ public class LoginPage {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Введённый вами пароль пользователя "
                         + loginName + " неверен. Забыли пароль?"));
+        CustomLogger.logger.info("ok");
         return this;
     }
 
@@ -97,6 +108,7 @@ public class LoginPage {
         $(byXpath(loginPageLocators.error)).shouldBe(visible)
                 .shouldHave(exactText("ОШИБКА: Введённый вами пароль для адреса "
                         + email + " неверен. Забыли пароль?"));
+        CustomLogger.logger.info("ok");
         return this;
     }
 }

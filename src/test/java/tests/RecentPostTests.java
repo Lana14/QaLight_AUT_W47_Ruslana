@@ -26,10 +26,6 @@ public class RecentPostTests extends BasePage {
 
     @Test(description = "Get new topics for recent posts")
     void getNewTopicsForRecentPosts() throws IOException, GeneralSecurityException {
-        String spreadsheetId = "1ojvfbEPjDeFX2AY_nzTGT-g3n9mZZCjSzzP9MDWSkFw";
-        String range = "Sport!A2:A7";
-        for (List<Object> asd : getGoogleSheetValue(spreadsheetId, range)) {
-            System.out.println(asd);
-        }
+        postPage.getNewTopicsForRecentPosts();
     }
 }

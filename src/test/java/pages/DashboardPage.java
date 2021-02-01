@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import common.logger.CustomLogger;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -21,6 +22,7 @@ public class DashboardPage {
     @Step("Logout from the Dashboard page")
     public LoginPage logOut() {
         $(byXpath(dashboardPageLocators.logout)).click();
+        CustomLogger.logger.info("ok");
         return new LoginPage();
     }
 }
